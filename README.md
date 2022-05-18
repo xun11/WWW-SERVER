@@ -12,7 +12,7 @@
   - [修改主網頁](#修改主網頁)
   - [個人網站功能](#個人網站功能)
 * [系統日誌](#系統日誌)
-
+* [參考資料](#參考資料)
 
 ## web-server
 網頁伺服器程式都需要從網路接受HTTP請求，然後提供HTTP回覆給請求者。HTTP回覆一般包含一個HTML檔案，有時也可以包含純文字檔案、圖像或其他類型的檔案。
@@ -178,8 +178,10 @@ sudo tail /var/log/apache2/access.log
 sudo tail -n 20 /var/log/apache2/error.log
 ```
 
-- 及時查看錯誤或正在生成的日誌
+- 及時查看錯誤或正在生成的日誌。
 ```
 sudo tail -n 10 -f /var/log/apache2/error.log
 ```
-
+## 參考資料
+ [https://ithelp.ithome.com.tw/articles/10225447](https://ithelp.ithome.com.tw/articles/10225447)
+ [https://zh.wikipedia.org/wiki/%E7%B6%B2%E9%A0%81%E4%BC%BA%E6%9C%8D%E5%99%A8](https://zh.wikipedia.org/wiki/%E7%B6%B2%E9%A0%81%E4%BC%BA%E6%9C%8D%E5%99%A8)
