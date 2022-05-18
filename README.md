@@ -10,10 +10,8 @@
   - [查看apache的狀態](#查看apache的狀態)
   - [查看ip](查看ip)
   - [修改主網頁](#修改主網頁)
-  - [開啟個人網站功能](#開啟個人網站功能)
-
-
-
+  - [個人網站功能](#個人網站功能)
+* [系統日誌](#系統日誌)
 
 
 ## web-server
@@ -98,7 +96,7 @@ sudo nano /var/www/html/index.html
 ![主網頁](https://user-images.githubusercontent.com/105623904/168848754-7eea369d-a3cf-4a05-ae83-d94f4cf2d21d.jpg)
 
 
-## 開啟個人網站功能
+## 個人網站功能
 - 進入目錄
 
 ```
@@ -116,12 +114,72 @@ sudo ln -s ../mods-available/userdir.load
 ```
 ![軟式連結](https://user-images.githubusercontent.com/105623904/168849922-91ebc5ee-fea6-4920-8e10-3f61307aeec7.jpg)
 
+- 編輯userdir.conf
+
+```
+sudo nano userdir.conf
+```
+
+- 刪除option之indexs參數，儲存離開
+
+![刪除option1](https://user-images.githubusercontent.com/105623904/169029072-aeb6aef5-2fc2-4863-aba0-8f98f8b80abd.jpg)
+
+![刪除option2](https://user-images.githubusercontent.com/105623904/169029092-f2bdc708-31d3-40cb-94fb-86e2084b8a00.jpg)
+
+- 重啟apache
+ ```
+sudo systemctl restart apache2 
+```
+
+- 為使用者建立存放個人網頁的目錄(圈起來的地方請修改成自己的使用者名稱)
+ ```
+mkdir /home/ubuntu/public_html
+```
+![個人網頁目錄](https://user-images.githubusercontent.com/105623904/169030516-0608618a-6366-49c7-bc69-a931a1db0b05.jpg)
+
+- 為使用者創建html檔
+```
+nano /home/b1042303/public_html/index.html
+```
+- html檔內容放入
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>個人網頁測試</title>
+</head>
+<body>
+	這是個人網頁
+</body>
+</html>
+```
+![個人網頁內容](https://user-images.githubusercontent.com/105623904/169032891-1fb79176-ac0a-4fa3-8c4e-cd25891622f9.jpg)
+
+- 開啟瀏覽器並輸入IP及使用者名稱(注意要加波浪符)，即可看到個人網頁
+
+![1652875102872](https://user-images.githubusercontent.com/105623904/169033590-1c055d88-6d87-468c-aa74-911d4a3a5d46.jpg)
+
+## 系統日誌
+安裝Apache後，會在 /var/log/apache2 目錄中建立日誌文件，查看這些日誌可了解與Web伺服器相關的問題。 /var/log/apache2目錄下的日誌文件如下:
+
+1.access.log:訪問您的網站的人已訪問了哪些文件的日誌。它包含有關傳輸是否成功完成，請求的來源(IP地址)，傳輸了多少數據以及傳輸發生在何時的訊息。
+
+2.error.log:包含Apache中發生的所有錯誤。並非所有發生的錯誤都是致命的，有些僅僅是客戶端連接的問題。
 
 
+- 查看access.log，顯示文件的最後10行內容。
+```
+sudo tail /var/log/apache2/access.log
+```
 
+- 查看最後20行的錯誤訊息。
+```
+sudo tail -n 20 /var/log/apache2/error.log
+```
 
-
-
-
-
+- 及時查看錯誤或正在生成的日誌
+```
+sudo tail -n 10 -f /var/log/apache2/error.log
+```
 
