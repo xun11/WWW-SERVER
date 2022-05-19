@@ -133,11 +133,11 @@ sudo systemctl restart apache2
 
 - 為使用者建立存放個人網頁的目錄(圈起來的地方請修改成自己的使用者名稱)
  ```
-mkdir /home/ubuntu/public_html
+mkdir /home/b1042303/public_html
 ```
 ![個人網頁目錄](https://user-images.githubusercontent.com/105623904/169030516-0608618a-6366-49c7-bc69-a931a1db0b05.jpg)
 
-- 為使用者創建html檔
+- 為使用者創建html檔(注意路徑)
 ```
 nano /home/b1042303/public_html/index.html
 ```
